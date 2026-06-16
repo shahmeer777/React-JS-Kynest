@@ -2,15 +2,17 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-// Register ScrollTrigger
-gsap.registerPlugin(ScrollTrigger);
-
 const Pricing = () => {
   const sectionRef = useRef(null);
   const headerRef = useRef(null);
   const cardsRef = useRef(null);
 
   useEffect(() => {
+    // Ensure ScrollTrigger is registered only on the client
+    if (typeof window !== 'undefined') {
+      gsap.registerPlugin(ScrollTrigger);
+    }
+
     const ctx = gsap.context(() => {
       // 1. Header Reveal
       gsap.from(".gsap-pricing-header", {
