@@ -1,0 +1,179 @@
+@import url('https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap');
+/* Make sure to install @fontsource/geist-sans or import via CDN in your HTML */
+@import "@fontsource/geist-sans";
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 260 87% 3%;
+  --foreground: 40 6% 95%;
+  --hero-sub: 40 6% 82%;
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: 'Geist Sans', sans-serif;
+}
+
+.font-general {
+  font-family: 'General Sans', sans-serif;
+}
+
+/* --- Liquid Glass Utility --- */
+.liquid-glass {
+  background: rgba(255, 255, 255, 0.01);
+  background-blend-mode: luminosity;
+  backdrop-filter: blur(4px);
+  border: none;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.liquid-glass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.4px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0.15) 20%, rgba(255,255,255,0) 40%, rgba(255,255,255,0) 60%, rgba(255,255,255,0.15) 80%, rgba(255,255,255,0.45) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* --- Infinite Marquee --- */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 20s linear infinite;
+  display: flex;
+  width: max-content;
+}
+
+
+
+/* --- Intelligence Card Animations --- */
+@keyframes signal-scan {
+  0% { transform: translateY(-100%); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(200%); opacity: 0; }
+}
+
+.animate-signal {
+  animation: signal-scan 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.05); }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+
+/* Scroll reveal utility classes */
+.reveal-hidden {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+
+/* --- Ynest Logo Animations --- */
+@keyframes ynestTopBarIn {
+  0%   { opacity: 0; transform: translateY(-18px); }
+  25%  { opacity: 1; transform: translateY(0); }
+  80%  { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-10px); }
+}
+
+@keyframes ynestBottomBarIn {
+  0%   { opacity: 0; transform: translateY(18px); }
+  25%  { opacity: 1; transform: translateY(0); }
+  80%  { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(10px); }
+}
+
+@keyframes ynestYReveal {
+  0%   { opacity: 0; transform: scaleX(0.85); }
+  30%  { opacity: 1; transform: scaleX(1); }
+  85%  { opacity: 1; transform: scaleX(1); }
+  100% { opacity: 0; transform: scaleX(0.9); }
+}
+
+.ynest-bar-top,
+.ynest-bar-bottom {
+  fill: #9b3a8c;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.ynest-bar-top {
+  animation: ynestTopBarIn 8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.ynest-bar-bottom {
+  animation: ynestBottomBarIn 8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.ynest-y-shape {
+  fill: #221f78;
+  /* You can change this to a brighter color if it's too dark on the bg! */
+  transform-box: fill-box;
+  transform-origin: 180px 217px;
+  animation: ynestYReveal 8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.ynest-text-nest {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 140px;
+  fill: hsl(var(--foreground)); /* Changed to off-white to be visible on dark bg */
+}
+
+/* --- Bento Box Utilities --- */
+.bento-card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.05);
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.bento-card:hover {
+  background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transform: translateY(-2px);
+}
+
+@keyframes marquee-fast {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee-fast {
+  animation: marquee-fast 15s linear infinite;
+  display: flex;
+  width: max-content;
+}
+
+.footer-pill {
+  @apply px-6 py-2 rounded-full border border-white/20 text-white/80 text-xs font-semibold tracking-widest uppercase hover:bg-white hover:text-black transition-all duration-300;
+}
